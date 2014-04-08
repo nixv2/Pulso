@@ -3,11 +3,11 @@ Ext.define("Pulso.view.Main", {
     xtype: 'main',
     
     config: {
-        slideSelector: false,
-        containerSlideDelay: 10,
-        selectSlideDuration: 200,
-        listPosition: 'left',
-        list: {
+        slideSelector       : false,
+        containerSlideDelay : 10,
+        selectSlideDuration : 200,
+        listPosition        : 'left',
+        list                : {
             maxDrag: 200,
             width: 50,
             grouped: false,
@@ -18,10 +18,24 @@ Ext.define("Pulso.view.Main", {
             }]
             
         },
-        items           : [{
+        items       : [{
             xtype   : 'container',
+            title   : '<span class="icon-camera">'
         },{
             xtype   : 'container',
+            title   : '<span class="icon-heart"></span>'
+        },{
+            xtype   : 'container',
+            title   : '<span class="icon-tv"></span>'
+        },{
+            xtype   : 'container',
+            title   : '<span class="icon-megaphone"></span>'
+        },{
+            xtype   : 'container',
+            title   : '<span class="icon-news"></span>'
+        },{
+            xtype   : 'container',
+            title   : '<span class="icon-t-shirt"></span>'
         }]
     }
 });
