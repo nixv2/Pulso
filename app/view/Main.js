@@ -9,7 +9,7 @@ Ext.define("Pulso.view.Main", {
         listPosition        : 'left',
         list                : {
             maxDrag: 200,
-            width: 50,
+            width: 75,
             grouped: false,
             items: [{
                 xtype: 'toolbar',
@@ -20,22 +20,40 @@ Ext.define("Pulso.view.Main", {
         },
         items       : [{
             xtype   : 'container',
-            title   : '<span class="icon-camera">'
+            title   : [
+                '<span class="icon-camera"></span>',
+                '<span class="menu-text">Fotos</span>'
+            ].join('')
         },{
             xtype   : 'container',
-            title   : '<span class="icon-heart"></span>'
+            title   : [
+                '</span><span class="icon-heart"></span>',
+                '<span class="menu-text">Favoritos</span>'
+            ].join('')
         },{
             xtype   : 'container',
-            title   : '<span class="icon-tv"></span>'
+            title   : [
+                '</span><span class="icon-tv"></span>',
+                '<span class="menu-text">Videos</span>'
+            ].join('')
         },{
             xtype   : 'container',
-            title   : '<span class="icon-megaphone"></span>'
+            title   : [
+                '</span><span class="icon-megaphone"></span>',
+                '<span class="menu-text">Novedades</span>'
+            ].join('')
         },{
             xtype   : 'container',
-            title   : '<span class="icon-news"></span>'
+            title   : [
+                '</span><span class="icon-news"></span>',
+                '<span class="menu-text">Impulsos</span>'
+            ].join('')
         },{
             xtype   : 'container',
-            title   : '<span class="icon-t-shirt"></span>'
+            title   : [
+                '</span><span class="icon-t-shirt"></span>',
+                '<span class="menu-text">Staff</span>',
+            ].join('')
         }]
     }
 });
