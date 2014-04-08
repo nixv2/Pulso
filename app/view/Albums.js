@@ -1,5 +1,5 @@
 Ext.define('Pulso.view.Albums', {
-    extend: 'Ext.DataView',
+    extend: 'Ext.Container',
     xtype: 'albums',
 
     requires    : [
@@ -7,17 +7,20 @@ Ext.define('Pulso.view.Albums', {
     ],
     
     config: {
-        items : [{
-            xtype: 'titlebar',
-            title:'Pulso',
-            docked:'top'
-        }],
-        store : {
-            type : 'albums'
-        },
-        itemTpl : [
-            '<img src="{path}">',
-            '<span>{date}</span>'
-        ].join('')
+        cls     :'albums',
+        items   : [{
+            xtype   : 'titlebar',
+            title   :'Pulso',
+            docked  :'top'
+        },{
+            xtype   : 'dataview',
+            store   : {
+                type    : 'albums'
+            },
+            itemTpl : [
+                '<img src="{path}">',
+                '<span>{date}</span>'
+            ].join('')
+        }]
     }
 });
