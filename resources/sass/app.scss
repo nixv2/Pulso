@@ -4,7 +4,13 @@
 @import 'sencha-touch/base';
 @import 'sencha-touch/base/all';
 
+$black: #2c2c2c;
+$red : #c0392b;
+
+
 // Custom code goes here..
+@import 'includes/_sidebar.scss';
+@import 'includes/_toolbar.scss';
 
 // Examples of using the icon mixin:
 // @include icon('user');
