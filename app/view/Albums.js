@@ -18,8 +18,11 @@ Ext.define('Pulso.view.Albums', {
                 type    : 'albums'
             },
             itemTpl : [
-                '<img src="{path}">',
-                '<span>{date}</span>'
+                '<div class="album" style="background:url({path}) no-repeat">',
+                '<div class="album-cover">',
+                '<span>{date}</span>',
+                '</div>',
+                '</div>'
             ].join('')
         }]
     }
