@@ -1,6 +1,10 @@
 Ext.define("Pulso.view.Main", {
     extend: 'Ext.ux.slidenavigation.View',
     xtype: 'main',
+
+    requires    : [
+        'Pulso.view.Albums',
+    ],
     
     config: {
         slideSelector       : false,
@@ -19,7 +23,7 @@ Ext.define("Pulso.view.Main", {
             
         },
         items       : [{
-            xtype   : 'container',
+            xtype   : 'albums',
             title   : [
                 '<span class="icon-camera"></span>',
                 '<span class="menu-text">Fotos</span>'
