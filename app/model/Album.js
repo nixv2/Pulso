@@ -3,11 +3,9 @@ Ext.define('Pulso.model.Album',{
     
     config  : {
         fields  : [
-            'id',
-            'gallery',
-            'date',
-            'path',
-            'pid'
+            'albumId',
+            'albumDate',
+            'albumPhotos'
         ]
     }
 });
