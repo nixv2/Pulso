@@ -17,6 +17,11 @@ Ext.define('Pulso.store.Albums',{
                 type    : "json",
                 rootProperty : "data"
             }
-        }
+        },
+        grouper: {
+           groupFn: function(record) {
+               return record.get('albumDate');
+           }
+       },
     }
 });

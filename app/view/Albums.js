@@ -14,6 +14,11 @@ Ext.define('Pulso.view.Albums', {
             docked  :'top'
         },{
             xtype   : 'list',
+            disableSelection : true,
+            emptyText   : 'No se encontraron fotos.',
+            infinite    : true,
+            variableHeights: true,
+            grouped : true,
             store   : {
                 type    : 'albums'
             },
@@ -21,12 +26,6 @@ Ext.define('Pulso.view.Albums', {
                 '<tpl for="albumPhotos">',
                 '<img src="{path}">',
                 '</tpl>'
-
-                // '<div class="album" style="background:url({path}) no-repeat">',
-                // '<div class="album-cover">',
-                // '<span>{date}</span>',
-                // '</div>',
-                // '</div>'
             ].join('')
         }]
     }
