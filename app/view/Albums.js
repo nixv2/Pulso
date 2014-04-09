@@ -13,16 +13,20 @@ Ext.define('Pulso.view.Albums', {
             title   :'Pulso',
             docked  :'top'
         },{
-            xtype   : 'dataview',
+            xtype   : 'list',
             store   : {
                 type    : 'albums'
             },
             itemTpl : [
-                '<div class="album" style="background:url({path}) no-repeat">',
-                '<div class="album-cover">',
-                '<span>{date}</span>',
-                '</div>',
-                '</div>'
+                '<tpl for="albumPhotos">',
+                '<img src="{path}">',
+                '</tpl>'
+
+                // '<div class="album" style="background:url({path}) no-repeat">',
+                // '<div class="album-cover">',
+                // '<span>{date}</span>',
+                // '</div>',
+                // '</div>'
             ].join('')
         }]
     }
