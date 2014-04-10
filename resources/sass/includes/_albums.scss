@@ -2,7 +2,24 @@
     .x-list .x-list-item.x-list-item-tpl .x-innerhtml {
         padding : 0 !important;
     }
+    .album, .x-list .x-list-item {
+        min-height: 80px !important;
+        overflow: hidden;
+    }
     img {
         width : 16.6%;
+        float:left;
+    }
+    .album-meta {
+        padding : 5px;
+        span{
+            display:block;
+            font-size: 12px;
+        }
+    }
+    .x-list .x-list-header {
+        border: none !important;
+        background : rgba(238, 238, 238, 0.93);
+        height:40px;
     }
 }

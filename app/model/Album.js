@@ -4,7 +4,7 @@ Ext.define('Pulso.model.Album',{
     config  : {
         fields  : [
             'albumId',
-            'albumDate',
+            {name:'albumDate',type:"date",dateFormat:"d/m/Y"},
             'albumPhotos'
         ]
     }
