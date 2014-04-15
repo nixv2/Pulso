@@ -17,6 +17,15 @@ Ext.define('Pulso.controller.Albums', {
     },
     
     sigleAlbum: function( list, index, target, record) {
-        
+        Ext.data.JsonP.request({
+            url     : 'http://pulso.um.edu.mx/app/singleGallery.php',
+            callbackKey: 'callback',
+            params  : {
+                gid : record.data.albumId,
+            },
+            success: function(result, request) {
+                console.log(result)
+            }
+        });
     }
 });
