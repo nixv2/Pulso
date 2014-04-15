@@ -1,5 +1,9 @@
 Ext.define('Pulso.controller.Albums', {
     extend: 'Ext.app.Controller',
+
+    requires: [
+        'Pulso.store.Albums'
+    ],
     
     config: {
         refs: {
@@ -12,8 +16,7 @@ Ext.define('Pulso.controller.Albums', {
         }
     },
     
-    //called when the Application is launched, remove if not needed
     sigleAlbum: function( list, index, target, record) {
-        console.log(record)
+        
     }
 });
