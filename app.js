@@ -48,16 +48,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add({
-            xtype : 'container',
-            layout  : 'card',
-            id  : 'menu',
-            activeItem:0,
-            items   : [
-                Ext.create('Pulso.view.Main'),
-                Ext.create('Pulso.view.Album')
-            ]
-        });
+        Ext.Viewport.add(Ext.create('Pulso.view.Main'));
     },
 
     onUpdated: function() {

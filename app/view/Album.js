@@ -1,5 +1,6 @@
 Ext.define('Pulso.view.Album', {
     extend: 'Ext.Carousel',
+    xtype : 'album',
     
     config: {
         cls     : 'album-carousel',
@@ -19,7 +20,7 @@ Ext.define('Pulso.view.Album', {
         console.log(event)
     },
     addPic : function(data){
-        console.log(data.path)
+        console.log(data)
         return this.add({
             xtype: 'container',
             model:data,

@@ -7,8 +7,8 @@ Ext.define('Pulso.controller.Albums', {
     
     config: {
         refs: {
-            vista : 'viewport #menu',
-            album : 'viewport #menu carousel',
+            vista : 'main',
+            album : 'main album',
             albums: 'albums list'
         },
         control: {
@@ -46,8 +46,8 @@ Ext.define('Pulso.controller.Albums', {
         var me = this,
             menu = me.getVista(),
             album = me.getAlbum();
-        
-        me.setPhotos(result.data)
+        console.log(result.data)
+        me.setPhotos(result)
         album.setMasked(false);
         for (var i = 0; i < 7; i++) {
             album.addPic(result.data[i]);            

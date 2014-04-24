@@ -1,5 +1,5 @@
 Ext.define('Pulso.view.Albums', {
-    extend: 'Ext.Container',
+    extend: 'Pulso.view.Card',
     xtype: 'albums',
 
     requires    : [
@@ -8,11 +8,11 @@ Ext.define('Pulso.view.Albums', {
     
     config: {
         cls     :'albums',
+        toolbar     : [
+            {title:'Pulso'},
+            {icon:'icon-calendar',fn:'showSearch'}
+        ],
         items   : [{
-            xtype   : 'titlebar',
-            title   :'Pulso',
-            docked  :'top'
-        },{
             xtype   : 'list',
             disableSelection : true,
             emptyText   : 'No se encontraron fotos',
