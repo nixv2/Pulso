@@ -23,7 +23,7 @@ Ext.define('Pulso.controller.Albums', {
         var me =  this,
             menu = me.getVista(),
             album = me.getAlbum();
-        
+
         album.setMasked({
             xtype: 'loadmask',
             message: 'Cargando...'
@@ -42,11 +42,11 @@ Ext.define('Pulso.controller.Albums', {
         });
     },
     loadPhotos : function(result, request) {
-        console.log(result)
+        // console.log(result)
         var me = this,
             menu = me.getVista(),
             album = me.getAlbum();
-        console.log(result.data)
+        // console.log(result.data)
         me.setPhotos(result)
         album.setMasked(false);
         for (var i = 0; i < 7; i++) {

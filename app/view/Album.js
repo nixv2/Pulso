@@ -1,15 +1,19 @@
 Ext.define('Pulso.view.Album', {
-    extend: 'Ext.Carousel',
+    extend: 'Pulso.view.Card',
     xtype : 'album',
     
     config: {
-        cls     : 'album-carousel',
-        indicator: false,
-        items   : [{
-            xtype   : 'container',
-            docked  :'top',
-            html    : '<span class="icon-heart saveFav"></span>'
-        }]
+        layout:'fit',
+        items : [{
+            xtype: 'carousel',
+            cls     : 'album-carousel',
+            indicator: false,
+            items: []
+        }],
+        toolbar: [
+            {title:'Favoritos'},
+            {icon:'icon-heart',fn:'addFav'}
+        ]
     },
     initialize : function(){
         this.callParent(arguments);
@@ -20,8 +24,10 @@ Ext.define('Pulso.view.Album', {
         console.log(event)
     },
     addPic : function(data){
-        console.log(data)
-        return this.add({
+        // console.log(data)
+        var car = this.down('carousel');
+        console.log(car)
+        car.add({
             xtype: 'container',
             model:data,
             items: [{
@@ -33,6 +39,7 @@ Ext.define('Pulso.view.Album', {
                     '</div>'
                 ]
             }]
-        })
+        });
+        return
     }
 });
