@@ -7,25 +7,68 @@ Ext.define('Pulso.controller.Albums', {
     
     config: {
         refs: {
-            
+            vista : 'viewport #menu',
+            album : 'viewport #menu carousel',
+            albums: 'albums list'
         },
         control: {
             'albums list': {
                 itemtap : 'sigleAlbum'
             }
-        }
+        },
+        photos : ''
     },
     
     sigleAlbum: function( list, index, target, record) {
+        var me =  this,
+            menu = me.getVista(),
+            album = me.getAlbum();
+        
+        album.setMasked({
+            xtype: 'loadmask',
+            message: 'Cargando...'
+        });
+
+        menu.setActiveItem(1);
+
         Ext.data.JsonP.request({
             url     : 'http://pulso.um.edu.mx/app/singleGallery.php',
             callbackKey: 'callback',
             params  : {
                 gid : record.data.albumId,
             },
-            success: function(result, request) {
-                console.log(result)
-            }
+            success: me.loadPhotos,
+            scope   : me
         });
+    },
+    loadPhotos : function(result, request) {
+        console.log(result)
+        var me = this,
+            menu = me.getVista(),
+            album = me.getAlbum();
+        
+        me.setPhotos(result.data)
+        album.setMasked(false);
+        for (var i = 0; i < 7; i++) {
+            album.addPic(result.data[i]);            
+        };
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ Ext.application({
     ],
 
     views: [
-        'Main'
+        'Main','Album'
     ],
     controllers: ['Albums'],
 
@@ -48,7 +48,16 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Pulso.view.Main'));
+        Ext.Viewport.add({
+            xtype : 'container',
+            layout  : 'card',
+            id  : 'menu',
+            activeItem:0,
+            items   : [
+                Ext.create('Pulso.view.Main'),
+                Ext.create('Pulso.view.Album')
+            ]
+        });
     },
 
     onUpdated: function() {
