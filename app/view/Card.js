@@ -63,11 +63,20 @@ Ext.define('Pulso.view.Card', {
     },
 
     toggleMenu : function(){
-        this.getSlider().toggleContainer();
+        var main =  this.up('#main'),
+            active = main.getActiveItem();
+
+        if (active.isXType('pulsomenu')) {
+            this.getSlider().toggleContainer();
+        } else{
+            active = main.getActiveItem();
+            active.down('carousel').removeAll();
+            main.setActiveItem(0);            
+        }
     },
 
     setSliderCmp : function(){
-        this.setSlider(this.up('main'));
+        this.setSlider(this.up('pulsomenu'));
     }
 
 });

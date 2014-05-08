@@ -15,18 +15,18 @@ Ext.define('Pulso.view.Album', {
             {icon:'icon-heart',fn:'addFav'}
         ]
     },
-    initialize : function(){
-        this.callParent(arguments);
+    // initialize : function(){
+    //     this.callParent(arguments);
 
-        this.element.on('tap',this.handleTapEvent,this);
-    },
-    handleTapEvent : function(event){
-        console.log(event)
-    },
+    //     // this.element.on('tap',this.handleTapEvent,this);
+    // },
+    // handleTapEvent : function(event){
+    //     console.log(event)
+    // },
     addPic : function(data){
         // console.log(data)
         var car = this.down('carousel');
-        console.log(car)
+        // console.log(car)
         car.add({
             xtype: 'container',
             model:data,
@@ -40,6 +40,7 @@ Ext.define('Pulso.view.Album', {
                 ]
             }]
         });
+        // car.setActiveItem(0);
         return
     }
 });

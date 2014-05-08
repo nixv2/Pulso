@@ -8,6 +8,8 @@ Ext.define("Pulso.view.Main", {
     
     config: {
         layout: 'card',
+        activeItem :0,
+        itemId: 'main',
         items: [{
             xtype : 'pulsomenu'
         },{
