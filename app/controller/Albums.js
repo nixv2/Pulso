@@ -14,26 +14,22 @@ Ext.define('Pulso.controller.Albums', {
         control: {
             'albums list': {
                 itemtap : 'sigleAlbum'
+            },
+            'datepicker' :{
+                change : 'searchByDate',
+                hide   : 'destroy'
             }
         },
         photos : ''
     },
-    
+
     sigleAlbum: function( list, index, target, record) {
         var me =  this,
             menu = me.getVista(),
-            album = me.getAlbum();
-
-        album.setMasked({
-            xtype: 'loadmask',
-            message: 'Cargando...'
-        });
-
-        menu.setActiveItem(1);
+            album = me.getAlbum()
 
         Ext.data.JsonP.request({
             url     : 'http://pulso.um.edu.mx/app/singleGallery.php',
-            callbackKey: 'callback',
             params  : {
                 gid : record.data.albumId,
             },
@@ -41,17 +37,55 @@ Ext.define('Pulso.controller.Albums', {
             scope   : me
         });
     },
+
     loadPhotos : function(result, request) {
         // console.log(result)
         var me = this,
             menu = me.getVista(),
+            albums = me.getAlbums(),
             album = me.getAlbum();
-        // console.log(result.data)
-        me.setPhotos(result)
-        album.setMasked(false);
-        for (var i = 0; i < 7; i++) {
-            album.addPic(result.data[i]);            
+
+        if (result.success == true) {
+            me.setPhotos(result)
+            for (var i = 0; i < 3; i++) {
+                album.addPic(result.data[i]);            
+            };
+            menu.setActiveItem(1);
+            albums.setMasked(false);
+        } else{
+            albums.setMasked(false);
+            Ext.Msg.alert('Error',result.msg);
         };
+    },
+
+    searchByDate: function( picker, value, eOpts ){
+        var me = this,
+            menu = me.getVista(),
+            album = me.getAlbum(),
+            albums = me.getAlbums(),
+            date = Ext.Date.format(value,'d/m/Y');
+
+        picker.destroy();
+
+        albums.setMasked({
+            xtype: 'loadmask',
+            message: 'Buscando...'
+        });
+
+        Ext.data.JsonP.request({
+            url     : 'http://pulso.um.edu.mx/app/singleGallery.php',
+            callbackKey: 'callback',
+            params  : {
+                title : date
+            },
+            success: this.loadPhotos,
+            scope   : this
+        });
+    },
+
+    destroy :function (picker,e) {
+        console.log('cui cui ')
+        picker.destroy()
     }
 });
 

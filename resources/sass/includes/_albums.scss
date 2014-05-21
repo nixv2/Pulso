@@ -23,3 +23,48 @@
         height:40px;
     }
 }
+.x-picker{
+    background-color: $black;
+
+    .x-picker-item{
+        color:#fff;
+        height:auto;
+    }
+    .x-picker-mask{
+        
+        .x-picker-bar{
+            height:2.5em;
+            background-color:rgba(192, 57, 43, 0.3);
+        }
+    }
+
+    .x-button{
+        background-color:$red;
+        color:#fff;
+        @include border-radius(3px);
+        border: none;
+        padding: 5px 15px;
+        margin: 0 10px;
+    }
+
+    .x-picker-slot .x-dataview-item {
+        height: 2.5em;
+        line-height: 2.5em;
+        font-weight: bold;
+        padding: 0 10px;
+        vertical-align: middle;
+    }
+}
+
+.x-msgbox{
+    background-color: $black;
+
+    .x-button{
+        background-color:$red;
+        color:#fff;
+        @include border-radius(3px);
+        border: none;
+        padding: 5px 15px;
+        margin: 0 10px;
+    }    
+}
