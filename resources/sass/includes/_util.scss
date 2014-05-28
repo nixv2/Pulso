@@ -1,0 +1,75 @@
+.alerts{
+    width:100%;
+    /* Triangle css */
+    .triangle{
+        border-style: solid;
+        border-width: 10px;
+        height: 0;
+        position: relative;
+        width: 0;
+        float: right;
+        clear: both;
+        right: 35px;
+        top: -1px;
+        z-index: -1;
+    }
+    /* Alert css */
+    .alert{
+        color: #fff;
+        padding: 15px;
+        font-size: 13px;
+        text-align: center;
+        border-radius: 10px;
+        float: right;
+        width: 50px;
+        height: 10px;
+        margin-top: 18px;        
+        -webkit-transition: all .5s ease-in-out;
+        overflow: hidden;
+    }
+    /* Open bubble */
+    .open {
+        width: 50%;
+        height: 60px;
+    }
+    .alert p {
+        opacity: 0;
+        -webkit-transition: all .5s ease-in-out;
+    }
+    .open p{
+        opacity: 1
+    }
+    /* bubble error */
+    .type-error{
+        background: $red;
+    }
+
+    .triangle-error{
+        border-color: transparent $red $red  transparent;
+    }
+    /* bubble warning */
+    .type-warning{
+        background: #f4c414;
+    }
+
+    .triangle-warning{
+        border-color: transparent #f4c414 #f4c414  transparent;
+    }
+    /* bubble info */
+    .type-info{
+        background: #74bade;
+    }
+
+    .triangle-info{
+        border-color:transparent #74bade #74bade transparent;
+    }
+    /* bubble success */
+    .type-success{
+        background: #3fcf7f;
+    }
+
+    .triangle-success{
+        border-color:transparent #3fcf7f #3fcf7f transparent;
+    }
+
+}

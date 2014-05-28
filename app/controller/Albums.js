@@ -2,7 +2,8 @@ Ext.define('Pulso.controller.Albums', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'Pulso.store.Albums'
+        'Pulso.store.Albums',
+        'Pulso.view.Alert'
     ],
     
     config: {
@@ -21,6 +22,9 @@ Ext.define('Pulso.controller.Albums', {
             }
         },
         photos : ''
+    },
+    launch:function(){
+       
     },
 
     sigleAlbum: function( list, index, target, record) {
@@ -54,7 +58,11 @@ Ext.define('Pulso.controller.Albums', {
             albums.setMasked(false);
         } else{
             albums.setMasked(false);
-            Ext.Msg.alert('Error',result.msg);
+            // Ext.Msg.alert('Error',result.msg);
+            Ext.create('Pulso.view.Alert',{
+                msg : result.msg,
+                type: 'error'
+            });
         };
     },
 
@@ -84,8 +92,7 @@ Ext.define('Pulso.controller.Albums', {
     },
 
     destroy :function (picker,e) {
-        console.log('cui cui ')
-        picker.destroy()
+        picker.destroy();
     }
 });
 
