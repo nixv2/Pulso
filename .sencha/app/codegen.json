@@ -291,6 +291,17 @@
         "name": "Albums",
         "controllerNamespace": "Pulso.controller"
       }
+    },
+    "app/controller/Favorites.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "7cd8d1cf12515ca525732931d6b775e3f7924ad9",
+      "parameters": {
+        "appName": "Pulso",
+        "controllerName": "Favorites",
+        "controllerFileName": "Favorites",
+        "name": "Favorites",
+        "controllerNamespace": "Pulso.controller"
+      }
     }
   }
 }

@@ -23,7 +23,10 @@ Ext.application({
     views: [
         'Main','Album'
     ],
-    controllers: ['Albums'],
+    controllers: [
+        'Albums',
+        'Favorites'
+    ],
 
     icon: {
         '57': 'resources/icons/Icon.png',

@@ -11,36 +11,42 @@ Ext.define('Pulso.view.Album', {
             items: []
         }],
         toolbar: [
-            {title:'Favoritos'},
-            {icon:'icon-heart',fn:'addFav'}
+            {title:'{albumDate:date("d/m/Y")}'},
+            {icon:'icon-heart <tpl if="favorite">fav</tpl>', fn:'addFav'}
         ]
-    },
-    // initialize : function(){
-    //     this.callParent(arguments);
+    }, 
 
-    //     // this.element.on('tap',this.handleTapEvent,this);
-    // },
-    // handleTapEvent : function(event){
-    //     console.log(event)
-    // },
-    addPic : function(data){
-        // console.log(data)
+    renderTitle: function(model){
+        console.log(model)
+        this.down('#titlebar').setData(model);
+    },
+
+    addPic : function(model){
         var car = this.down('carousel');
-        // console.log(car)
         car.add({
             xtype: 'container',
-            model:data,
+            model:model,
             items: [{
                 xtype   : "component",
-                data    : data,
+                data    : model.data,
                 tpl     : [
                     '<div class="photo">',
-                        '<img src="{path}">',
+                        '<img src="{photo}">',
                     '</div>'
                 ]
             }]
-        });
-        // car.setActiveItem(0);
-        return
+        });        
+        car.setActiveItem(0);
+    },
+    
+    insertPic : function (toolbar) {
+        this.renderTitle(toolbar)
+    },
+
+    addFav:function () {
+        var id = this.down('carousel').getActiveItem().model.get('id'),
+            model = this.down('carousel').getActiveItem().model;
+        
+        this.fireEvent('favorite',id,model);
     }
 });

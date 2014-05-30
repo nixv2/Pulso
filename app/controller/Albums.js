@@ -19,12 +19,12 @@ Ext.define('Pulso.controller.Albums', {
             'datepicker' :{
                 change : 'searchByDate',
                 hide   : 'destroy'
+            },
+            'album carousel' :{
+                activeitemchange : 'addPic'
             }
         },
         photos : ''
-    },
-    launch:function(){
-       
     },
 
     sigleAlbum: function( list, index, target, record) {
@@ -43,17 +43,37 @@ Ext.define('Pulso.controller.Albums', {
     },
 
     loadPhotos : function(result, request) {
-        // console.log(result)
         var me = this,
             menu = me.getVista(),
             albums = me.getAlbums(),
-            album = me.getAlbum();
+            album = me.getAlbum(),
+            photo;
 
         if (result.success == true) {
             me.setPhotos(result)
+
             for (var i = 0; i < 3; i++) {
-                album.addPic(result.data[i]);            
-            };
+                photo = Ext.create('Pulso.model.Photo', {
+                    id : result.albumId+'-'+result.data[i].pid,
+                    albumId: result.albumId,
+                    albumDate: result.albumDate,
+                    photo: result.data[i].path,
+                    favorite: false
+                });
+
+                var favs = Ext.StoreMgr.lookup('Favorites'),
+                    favIndex = favs.find('id',photo.get('id')),
+                    exist = favIndex !== -1;
+
+                if(exist){
+                    photo.set('favorite',true);
+                }else{
+                    photo.set('favorite',false);
+                }
+                album.addPic(photo);
+            }
+            
+
             menu.setActiveItem(1);
             albums.setMasked(false);
         } else{
@@ -93,6 +113,33 @@ Ext.define('Pulso.controller.Albums', {
 
     destroy :function (picker,e) {
         picker.destroy();
+    },
+
+    addPic :function  (carousel,card) {
+        
+        var me = this,
+            album = me.getAlbum(),
+            model = card.model,
+            favs = Ext.StoreMgr.lookup('Favorites'),
+            favIndex = favs.find('id',model.get('id')),
+            exist = favIndex !== -1,
+            toolbar;
+        
+
+        if(exist){
+            toolbar = {
+                albumDate : model.get('albumDate'),
+                favorite  : true      
+            }
+        }else{
+            toolbar = {
+                albumDate : model.get('albumDate'),
+                favorite  : false
+            }
+        }
+
+        album.insertPic(toolbar);
+
     }
 });
 
